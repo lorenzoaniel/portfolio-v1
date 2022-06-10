@@ -3,13 +3,13 @@ import React from 'react';
 import useCurrentHeight from "../Helpers/useCurrentHeight";
 
 const SnowConfig = {
-    snowQuantity: 30
+    snowQuantity: 100
 }
 
 const Div = styled.div`
-    background-color: black;
+    background: hsla(0, 0%, 100%, 1);
+    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(206, 100%, 76%, 1) 64%);
     height: inherit;
-    overflow: hidden;
 `;
 
 const Span = styled.span`
@@ -19,10 +19,11 @@ const Span = styled.span`
     bottom:0;
     pointer-events:none;
     background: #FFFFFF;
-    height: 0.1rem;
-    width: 0.1rem;
+    height: 1px; //dont use rem or it glitches and overflows
+    width: 1px;
     border-radius: 50%;
     box-shadow: 0rem 0rem 0.2rem 0.2rem rgba(255,255,255,1);
+    
 
     /* ANIMATION */
 
@@ -33,7 +34,7 @@ const Span = styled.span`
 
     @keyframes fallingstars {
         0%{
-            transform:  translateX(0);
+            transform:  translateY(0);
             opacity: 1;
         }
         25%{

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const getHeight = () => window.innerHeight
-  || document.documentElement.clientHeight 
-  || document.body.clientHeight;
+const getWidth = () => window.innerWidth
+  || document.documentElement.clientWidth 
+  || document.body.clientWidth;
 
-function useCurrentHeight() {
-  // save current window Height in the state object
-  let [height, setHeight] = useState(getHeight());
+function useCurrentWidth() {
+  // save current window Width in the state object
+  let [width, setWidth] = useState(getWidth());
 
   // in this case useEffect will execute only once because
   // it does not have any dependencies.
@@ -16,8 +16,8 @@ function useCurrentHeight() {
     const resizeListener = () => {
       // prevent execution of previous setTimeout
       clearTimeout(timeoutId);
-      // change Height from the state object after 150 milliseconds
-      timeoutId = setTimeout(() => setHeight(getHeight()), 150);
+      // change Width from the state object after 150 milliseconds
+      timeoutId = setTimeout(() => setWidth(getWidth()), 150);
     };
     // set resize listener
     window.addEventListener('resize', resizeListener);
@@ -29,7 +29,7 @@ function useCurrentHeight() {
     }
   }, [])
 
-  return height;
+  return width;
 }
 
-export default useCurrentHeight;
+export default useCurrentWidth;

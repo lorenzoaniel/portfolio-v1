@@ -6,18 +6,53 @@ import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
 const Nav = styled.nav`
     /* GENERAL */
     background-image: url(${imgIce});
-    box-shadow: 0rem 0.5rem 2rem 2.5rem rgba(54, 168, 239, 1),
-    0rem 0.5rem 1rem 0.5rem rgba(54, 168, 239, 1) inset;
+    /* box-shadow: 0rem 0.5rem 2rem 2.5rem rgba(54, 168, 239, 1),
+    0rem 0.5rem 1rem 0.5rem rgba(54, 168, 239, 1) inset; */
     backdrop-filter: blur(1rem);
-    border-bottom: 0.5rem groove rgba(255, 255, 255, 0.1);
 
     /* GRID/FLEX */
-
     grid-area: ${props => props.gridArea};
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     
+    /* ANIMATION */
+    animation: navBarFloat 3s linear infinite;
+    animation-direction: alternate;
+
+    /* KEYFRAMES */ 
+    @keyframes navBarFloat{
+        0%{
+            transform: translate3d(0, 0, 0);
+            box-shadow: 0rem 1rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+            0rem -1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
+        }
+        25%{
+            transform: translate3d(0, 0.3rem, 0);
+            box-shadow: 0rem 0.8rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem -0.8rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem 0.2rem 1rem 0.2rem rgba(54, 168, 239, 1) inset;
+        }
+        50%{
+            transform: translate3d(0, 0.6rem, 0);
+            box-shadow: 0rem 0.6rem 1.5rem 0.6rem rgba(54, 168, 239, 1),
+            0rem -0.6rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem 0rem 0.5rem 0rem rgba(54, 168, 239, 1) inset;
+        }
+        75%{
+            transform: translate3d(0, 0.8rem, 0);
+            box-shadow: 0rem 0.4rem 1.5rem 0.8rem rgba(54, 168, 239, 1),
+            0rem -0.4rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem -0.2rem 1rem 0.2rem rgba(54, 168, 239, 1) inset;
+        }
+        100%{
+            transform: translate3d(0, 1rem, 0);
+            box-shadow: 0rem 0.2rem 1.5rem 1rem rgba(54, 168, 239, 1),
+            0rem -0.2rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
+        }
+    }
 
     /* NESTED */
     
@@ -38,7 +73,7 @@ const Nav = styled.nav`
         
 
         &:hover {
-            text-shadow: 0rem 0.1rem 0rem rgba(255,255,255,0.8);
+            text-shadow: 0rem 0.1rem 0rem rgba(255,255,255,0.5);
         }
     }
 `;

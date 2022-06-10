@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import React from 'react';
 import useCurrentHeight from "../Helpers/useCurrentHeight";
+import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
 
 const SnowConfig = {
-    snowQuantity: 100
+    snowQuantity: 50
 }
 
 const Div = styled.div`
     background: hsla(0, 0%, 100%, 1);
-    background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(206, 100%, 76%, 1) 64%);
+    background: url(${imgIce}), linear-gradient(0deg, hsla(0, 0%, 100%, 0.5) 0%, hsla(206, 100%, 76%, 0.5) 50%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     height: inherit;
 `;
 

@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body, #root {
-        background-color: purple;
         color: #FFFFFF;
         height: 100%;
     }

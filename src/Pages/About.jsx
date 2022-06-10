@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Div = styled.div`
-  background: red;
   display: flex;
   justify-content: center;
   align-items: center;

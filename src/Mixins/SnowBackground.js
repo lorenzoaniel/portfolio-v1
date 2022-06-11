@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from 'react';
 import useCurrentHeight from "../Helpers/useCurrentHeight";
 import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
+import getRandomValue from "../Helpers/getRandomVal";
 
 const SnowConfig = {
     snowQuantity: 50
@@ -62,8 +63,8 @@ const SnowBackground = (props) => {
 
     const makeStars = new Array(SnowConfig.snowQuantity).fill(0).map((x, index) => {
         const randValRight = Math.floor(Math.random(0) * 101);
-        const randAnimateDelay = (Math.random() + 1) * 2;
-        const randAnimateDuration = (Math.random() + 1) * 2;
+        const randAnimateDelay = getRandomValue(1, 2);
+        const randAnimateDuration = getRandomValue(1, 2);
         return(
             <Span 
                 key={index} 

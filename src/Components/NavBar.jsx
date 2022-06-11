@@ -7,7 +7,7 @@ import Title from './Title';
 
 const Nav = styled.nav`
     /* GENERAL */
-    filter: drop-shadow(0px 100px 50px rgba(0,0,0,0.1));
+    
     /* GRID/FLEX */
     grid-area: ${props => props.gridArea};
     display: flex;
@@ -20,7 +20,7 @@ const Div = styled.div`
     height: 100%;
     background-image: url(${imgIce});
     background-size: contain;
-    clip-path: polygon(35% 0, 92% 3%, 100% 35%, 93% 65%, 80% 90%, 53% 82%, 35% 93%, 5% 80%, 0% 35%, 8% 16%);
+    border-radius: 1.25rem;
 
     /* GRID/FLEX */
     flex-basis: 33%;
@@ -37,32 +37,32 @@ const Div = styled.div`
     @keyframes elementFloat {
         0%{
             transform: translate3d(0, 0, 0);
-            box-shadow: 0rem 1rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
-            0rem -1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            box-shadow: 0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+            0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
             0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
         }
         25%{
             transform: translate3d(0, 0.3rem, 0);
-            box-shadow: 0rem 0.8rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem -0.8rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            box-shadow: 0rem 0.4rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            0rem -0.4rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
             0rem 0.2rem 1rem 0.2rem rgba(54, 168, 239, 1) inset;
         }
         50%{
             transform: translate3d(0, 0.6rem, 0);
-            box-shadow: 0rem 0.6rem 1.5rem 0.6rem rgba(54, 168, 239, 1),
-            0rem -0.6rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            box-shadow: 0rem 0.3rem 1.5rem 0.6rem rgba(54, 168, 239, 1),
+            0rem -0.3rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
             0rem 0rem 0.5rem 0rem rgba(54, 168, 239, 1) inset;
         }
         75%{
             transform: translate3d(0, 0.8rem, 0);
-            box-shadow: 0rem 0.4rem 1.5rem 0.8rem rgba(54, 168, 239, 1),
-            0rem -0.4rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            box-shadow: 0rem 0.2rem 1.5rem 0.8rem rgba(54, 168, 239, 1),
+            0rem -0.2rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
             0rem -0.2rem 1rem 0.2rem rgba(54, 168, 239, 1) inset;
         }
         100%{
             transform: translate3d(0, 1rem, 0);
-            box-shadow: 0rem 0.2rem 1.5rem 1rem rgba(54, 168, 239, 1),
-            0rem -0.2rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+            box-shadow: 0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
+            0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
             0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
         }
     }

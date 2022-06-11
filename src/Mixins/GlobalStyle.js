@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
     html {
         height: 100vh;
+        min-width: 530px;
     }
 
     body, #root {

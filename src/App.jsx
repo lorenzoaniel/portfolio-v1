@@ -12,7 +12,7 @@ const Main = styled.div`
   display: grid;
   height: inherit;
   grid-template-columns: 1fr;
-  grid-template-rows: 5% 95%;
+  grid-template-rows: 10% 90%;
   grid-template-areas: 
     "navbar"
     "main";

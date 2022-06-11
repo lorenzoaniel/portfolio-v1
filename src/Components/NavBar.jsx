@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
 import getRandomValue from '../Helpers/getRandomVal';
-import MemoTitle from './Title';
+import Title from './Title';
 
 const Nav = styled.nav`
     /* GENERAL */
@@ -69,23 +69,12 @@ const Div = styled.div`
 `;
 
 const NavBar = (props) => {
-    let startAnimation = false; /*Can't use state otherwise divs rerender everytime its hovered must memo child Title comps */
-    let initialAnimation = false;
-
-    const toggleAnimation = () => {/*condition to force false state start then goes back to true and false onhover/outofhover */
-        if(initialAnimation){
-            startAnimation = !startAnimation;
-        }else{
-            initialAnimation = !initialAnimation;
-            startAnimation = !startAnimation;
-        }
-    }
 
     return (
         <Nav {...props}>
-            <Div onMouseEnter={toggleAnimation} onMouseLeave={toggleAnimation} delayVal={getRandomValue(1,2)}><Link to={"/"}><MemoTitle startAnimation={startAnimation} title={"About"}/></Link></Div>
-            <Div onMouseEnter={toggleAnimation} onMouseLeave={toggleAnimation} delayVal={getRandomValue(2,3)}><Link to={"/projects"}><MemoTitle startAnimation={startAnimation} title={"Projects"}/></Link></Div>
-            <Div onMouseEnter={toggleAnimation} onMouseLeave={toggleAnimation} delayVal={getRandomValue(3,4)}><Link to={"/contact"}><MemoTitle startAnimation={startAnimation} title={"Contact"}/></Link></Div>
+            <Div delayVal={getRandomValue(1,2)}><Link to={"/"}><Title title={"About"}/></Link></Div>
+            <Div delayVal={getRandomValue(2,3)}><Link to={"/projects"}><Title title={"Projects"}/></Link></Div>
+            <Div delayVal={getRandomValue(3,4)}><Link to={"/contact"}><Title title={"Contact"}/></Link></Div>
         </Nav>
     )
 }

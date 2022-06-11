@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import getRandomValue from '../Helpers/getRandomVal';
+
 
 const H1 = styled.h1`
     display: inline-block;
@@ -48,15 +48,16 @@ const H1 = styled.h1`
 `;
 
 const Title = (props) => {
-    console.log(props.startAnimation);
+    const [startAnimation, setStartAnimation] = React.useState(false);
+    const toggleAnimation = () => {
+        setStartAnimation(prevState => !prevState);
+    }
 
     return(
         props.title.split('').map((letter, index) => {
-            return( <H1 delayVal={index} className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
+            return( <H1 onMouseEnter={toggleAnimation} onMouseLeave={toggleAnimation} startAnimation={startAnimation} delayVal={index} className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
         })
     )
 };
 
-const MemoTitle = React.memo(Title);
-
-export default MemoTitle;
+export default Title;

@@ -8,9 +8,10 @@ const H1 = styled.h1`
     background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    ${props => props.startAnimation ? `animation: animateMenuItems 0.5s linear infinite;` : `` }
+    animation: animateMenuItems 0.5s linear infinite;
     animation-direction: alternate;
     animation-delay: 0.${props => props.delayVal}s;
+    animation-play-state: paused;
 
     /* FONT */
     font-family: 'Iceberg', cursive;
@@ -48,14 +49,9 @@ const H1 = styled.h1`
 `;
 
 const Title = (props) => {
-    const [startAnimation, setStartAnimation] = React.useState(false);
-    const toggleAnimation = () => {
-        setStartAnimation(prevState => !prevState);
-    }
-
     return(
         props.title.split('').map((letter, index) => {
-            return( <H1 onMouseEnter={toggleAnimation} onMouseLeave={toggleAnimation} startAnimation={startAnimation} delayVal={index} className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
+            return( <H1 delayVal={index} className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
         })
     )
 };

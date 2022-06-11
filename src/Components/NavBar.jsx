@@ -66,6 +66,12 @@ const Div = styled.div`
             0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
         }
     }
+
+    /* NESTED */
+
+    &:hover .TitleSpan {
+        animation-play-state: running;
+    }
 `;
 
 const NavBar = (props) => {

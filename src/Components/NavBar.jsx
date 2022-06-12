@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
 import getRandomValue from '../Helpers/getRandomVal';
+import HamburgerIcon from './HamburgerIcon';
 import Title from './Title';
 
 const Nav = styled.nav`
@@ -23,7 +24,7 @@ const Div = styled.div`
     border-radius: 1.25rem;
 
     /* GRID/FLEX */
-    flex-basis: 33%;
+    flex-basis: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,13 +75,47 @@ const Div = styled.div`
     }
 `;
 
+const HamburgerMenu = styled(Div)`
+    /* GRID/FLEX */
+    background-size: cover;
+    flex-basis: 5%;
+    display: grid;
+    padding: 0rem 0.625rem;
+    justify-content: space-between; 
+    align-items: space-between;
+    grid-template-columns: inherit;
+    grid-template-rows:  1fr 1fr 1fr;
+    grid-template-areas: 
+    "topLine"
+    "midLine"
+    "botLine";
+
+    & .topLine{
+        grid-area: topLine;
+    }
+
+    & .middleLine{
+        grid-area: midLine;
+    }
+
+    & .bottomLine{
+        grid-area: botLine;
+    }
+`;
+
 const NavBar = (props) => {
+    const [toggleMenu, setToggleMenu] = React.useState(false);
+
+    const handleClickMenu = () => {
+        setToggleMenu(prevState => !prevState);
+    }
 
     return (
         <Nav {...props}>
             <Div delayVal={getRandomValue(1,2)}><Link to={"/"}><Title title={"About"}/></Link></Div>
             <Div delayVal={getRandomValue(2,3)}><Link to={"/projects"}><Title title={"Projects"}/></Link></Div>
             <Div delayVal={getRandomValue(3,4)}><Link to={"/contact"}><Title title={"Contact"}/></Link></Div>
+            <HamburgerMenu onClick={handleClickMenu} delayVal={getRandomValue(4,5)}><HamburgerIcon toggleMenu={toggleMenu}/></HamburgerMenu>
         </Nav>
     )
 }

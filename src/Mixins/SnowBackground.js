@@ -28,7 +28,6 @@ const Span = styled.span.attrs(props => ({
         width: `1px`,
         borderRadius: `50%`,
         boxShadow: `0rem 0rem 0.2rem 0.2rem rgba(255,255,255,1)`,
-        
 
         /* ANIMATION */
 

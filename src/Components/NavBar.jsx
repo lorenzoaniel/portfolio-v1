@@ -84,11 +84,13 @@ const HamburgerMenu = styled(Div)`
     justify-content: space-between; 
     align-items: space-between;
     grid-template-columns: inherit;
-    grid-template-rows:  1fr 1fr 1fr;
-    grid-template-areas: 
-    "topLine"
-    "midLine"
-    "botLine";
+    grid-template-rows:  ${props => props.toggleMenu ? "1fr 1fr 1fr" : "1fr"};
+    grid-template-areas: ${props => props.toggleMenu ? 
+        `"topLine"
+        "midLine"
+        "botLine"` : 
+        ""
+    };
 
     & .topLine{
         grid-area: topLine;
@@ -104,7 +106,7 @@ const HamburgerMenu = styled(Div)`
 `;
 
 const NavBar = (props) => {
-    const [toggleMenu, setToggleMenu] = React.useState(true);
+    const [toggleMenu, setToggleMenu] = React.useState(false);
 
     const handleClickMenu = () => {
         setToggleMenu(prevState => !prevState);
@@ -115,7 +117,7 @@ const NavBar = (props) => {
             <Div delayVal={getRandomValue(1,2)}><Link to={"/"}><Title title={"About"}/></Link></Div>
             <Div delayVal={getRandomValue(2,3)}><Link to={"/projects"}><Title title={"Projects"}/></Link></Div>
             <Div delayVal={getRandomValue(3,4)}><Link to={"/contact"}><Title title={"Contact"}/></Link></Div>
-            <HamburgerMenu onClick={handleClickMenu} delayVal={getRandomValue(4,5)}><HamburgerIcon toggleMenu={toggleMenu}/></HamburgerMenu>
+            <HamburgerMenu onClick={handleClickMenu} toggleMenu={toggleMenu} delayVal={getRandomValue(4,5)}><HamburgerIcon toggleMenu={toggleMenu}/></HamburgerMenu>
         </Nav>
     )
 }

@@ -6,7 +6,7 @@ const H1 = styled.h1`
     display: inline-block;
     background: linear-gradient(0deg, #5AD3FF, #50C2F4, #46B1E9, #3CA1DE, #3290D3, #287FC8, #1E6EBD, #145EB2, #0A4DA7, #003C9C);
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
 
     animation: animateMenuItems 0.5s linear infinite;
     animation-direction: alternate;

@@ -104,7 +104,7 @@ const HamburgerMenu = styled(Div)`
 `;
 
 const NavBar = (props) => {
-    const [toggleMenu, setToggleMenu] = React.useState(false);
+    const [toggleMenu, setToggleMenu] = React.useState(true);
 
     const handleClickMenu = () => {
         setToggleMenu(prevState => !prevState);

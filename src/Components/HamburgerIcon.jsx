@@ -4,7 +4,7 @@ import useCurrentWidth from "../Helpers/useCurrentWidth";
 
 const Icon = styled.span`
     background: linear-gradient(0deg,  #46B1E9, #3CA1DE, #3290D3, #287FC8, #0A4DA7, #072554, rgba(0,0,0,0.5));
-    box-shadow: 0 0.1rem 0.5rem 0.2rem rgba(255,255,255,0.3),
+    box-shadow: 0 0.0.05rem 0.5rem 0.2rem rgba(255,255,255,0.3),
                 0 0.1rem 0.1rem rgba(0,0,0,0.5) inset;
     height: 0.5rem;
     width: ${props => props.ValForDynamicResizing}px;
@@ -19,7 +19,6 @@ const HamburgerIcon = (props) => {
     let topLineValForDynamicResizing = width / 20.0625;
     let midLineValForDynamicResizing = width / (props.toggleMenu ? 25 : 20.0625);
     let botLineValForDynamicResizing = width / (props.toggleMenu ? 35.125 : 20.0625);
-    console.log("render")
 
     return(
         <>

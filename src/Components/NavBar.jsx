@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import { motion } from "framer-motion"
 import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
 import getRandomValue from '../Helpers/getRandomVal';
 import HamburgerIcon from './HamburgerIcon';
@@ -16,7 +17,7 @@ const Nav = styled.nav`
     align-items: center;
 `;
 
-const Div = styled.div`
+const Div = styled(motion.div)`
     /* GENERAL */
     height: 100%;
     background-image: url(${imgIce});
@@ -69,7 +70,6 @@ const Div = styled.div`
     }
 
     /* NESTED */
-
     &:hover .TitleSpan {
         animation-play-state: running;
     }
@@ -92,16 +92,38 @@ const HamburgerMenu = styled(Div)`
         ""
     };
 
+    /* KEYFRAMES */ 
+    @keyframes toggleOnAnimationBurger {
+        from{
+            transform: scaleX(0);
+        }
+        to{
+            transform: scaleX(1);
+        }
+    }
+
+    & *{
+        animation-name: ${props => props.toggleMenu ? "toggleOnAnimationBurger" : ""};
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+    }
+
     & .topLine{
         grid-area: topLine;
+        ${props => props.toggleMenu ? "" : `transform: rotate(45deg);`}
+        
     }
 
     & .middleLine{
         grid-area: midLine;
+        ${props => props.toggleMenu ? "" : `transform: rotate(90deg);`}
+        animation-delay: 0.1s;
     }
 
     & .bottomLine{
         grid-area: botLine;
+        ${props => props.toggleMenu ? "" : `transform: rotate(-45deg);`}
+        animation-delay: 0.2s;
     }
 `;
 

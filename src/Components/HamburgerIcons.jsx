@@ -58,7 +58,7 @@ const HamburgerIcon = (props) => {
     }
    
     return(
-        <Icon key={props.toggleMenu} layout {...IconPropsObj} className={props.class} transition={{duration: 1}}/> // have to add key with toggle otherwise dynamic initial wont work
+        <Icon key={props.toggleMenu} {...IconPropsObj} className={props.class} transition={{duration: 1}}/> // have to add key with toggle otherwise dynamic initial wont work
     )
 }
 

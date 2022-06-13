@@ -34,10 +34,6 @@ const variantsMenuDiv = {
 }
 
 const HamburgerMenu = (props) => {
-    // let width = useCurrentWidth();
-    // let topLineValForDynamicResizing = { width: width / 20.0625 };
-    // let midLineValForDynamicResizing = { width: width / (props.toggleMenu ? 25 : 20.0625) };
-    // let botLineValForDynamicResizing = { width: width / (props.toggleMenu ? 35.125 : 20.0625) };
 
     return(
         <MenuDiv onClick={props.handleClickMenu} layout variants={variantsMenuDiv} animate={props.toggleMenu ? "toggledOnMenu" : "toggledOffMenu"}>

@@ -74,7 +74,7 @@ const NavBarMenuItem = (props) => {
     sequence();
 
     return (
-        <Div key={props.id} initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={{ opacity: 0 }}>{props.children}</Div>
+        <Div initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={{ opacity: 0 }}>{props.children}</Div>
     )
 }
 

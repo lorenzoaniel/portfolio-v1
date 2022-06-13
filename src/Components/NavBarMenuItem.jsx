@@ -1,9 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import styled, {css} from 'styled-components';
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
-import Title from './Title';
 
 const defaultMenuItemStyle = css`
     /* GENERAL */
@@ -24,49 +22,59 @@ const Div = styled(motion.div)`
 `;
 
 const NavBarMenuItem = (props) => {
-    const menuItems = [
-        {
-            title: "About",
-            link: "/"
-        },
-        {
-            title: "Projects",
-            link: "/projects"
-        },
-        {
-            title: "Contact",
-            link: "/contact"
-        },
-    ]
+    const animationDelay = (props.delay===0) ? 0 : props.delay;
 
-    const NavMenuDivOpenMenuInitial = {
-        boxShadow: `0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
-        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,
-    }
+    const animateDiv = useAnimation()
 
-    const NavMenuDivOpenMenu = {
+    const NavMenuDivWhileOpenMenu = {
         transform: [`translateY(0rem)`,`translateY(1rem)`],
         boxShadow: [`0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
         0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
         0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,`0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
         0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
         0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`],
+        transition: {
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 1,
+            delay: `0.${animationDelay}`,
+        },
     }
+
+    const NavMenuDivStartOpenMenu = {
+        opacity: 1,
+        transition: {
+            duration: 0.5,
+            delay: animationDelay/2,
+        },
+    }
+
+    // const NavMenuDivExitOpenMenu = {
+    //     opacity: 0,
+    //     transition: {
+    //         duration: 1,
+    //         delay: animationDelay/2,
+    //     },
+    // }
+
+    const NavMenuDivOpenMenuInitial = {
+        opacity: 0,
+        transform: `translateY(0rem)`,
+        boxShadow: `0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,
+    }
+
+    const sequence = async () => {
+        await animateDiv.start(NavMenuDivStartOpenMenu);
+        await animateDiv.start(NavMenuDivWhileOpenMenu); 
+        return
+    }
+        
+    sequence();
     
-    const NavMenuDivOpenMenuTransition = {
-        repeat: Infinity,
-        repeatType: "reverse",
-        duration: 2,
-        delay: props.key,
-    }
-
-    const renderMenuItems = menuItems.map((menuItem, index) => 
-        <Div key={index} initial={NavMenuDivOpenMenuInitial} animate={NavMenuDivOpenMenu} transition={NavMenuDivOpenMenuTransition}><Link to={menuItem.link}><Title title={menuItem.title}/></Link></Div>
-    )
-
     return (
-        renderMenuItems
+        <Div key={props.id} initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={{ opacity: 0 }}>{props.children}</Div>
     )
 }
 

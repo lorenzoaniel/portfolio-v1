@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from "framer-motion";
-import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
 import HamburgerIcon from './HamburgerIcons';
+import { defaultMenuItemStyle } from './NavBarMenuItem';
 // import useCurrentWidth from "../Helpers/useCurrentWidth";
 
 const MenuDiv = styled(motion.div)`
     /* GENERAL */
-    height: 100%;
-    background-image: url(${imgIce});
+    ${defaultMenuItemStyle}
     background-size: cover;
-    border-radius: 1.25rem;
+    
 
     /* GRID/FLEX */
     flex-basis: 5%;
@@ -28,8 +27,30 @@ const MenuDiv = styled(motion.div)`
 
 const HamburgerMenu = (props) => {
 
+    const HamburgerMenuDivOpenMenuInitial = {
+        boxShadow: `0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,
+    }
+
+    const HamburgerMenuDiv = {
+        transform: [`translateY(0rem)`,`translateY(1rem)`],
+        boxShadow: [`0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,`0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
+        0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`],
+    }
+
+    const HamburgerMenuDivTransition = {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 2,
+        delay: props.key,
+    }
+
     return(
-        <MenuDiv onClick={props.handleClickMenu} initial={props.initial} animate={props.animate} transition={props.transition}>
+        <MenuDiv onClick={props.handleClickMenu} initial={HamburgerMenuDivOpenMenuInitial} animate={HamburgerMenuDiv} transition={HamburgerMenuDivTransition}>
             <HamburgerIcon toggleMenu={props.toggleMenu} class={"topLine"}/>
             <HamburgerIcon toggleMenu={props.toggleMenu} class={"midLine"}/>
             <HamburgerIcon toggleMenu={props.toggleMenu} class={"botLine"}/>

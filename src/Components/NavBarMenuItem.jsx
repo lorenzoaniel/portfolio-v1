@@ -24,7 +24,7 @@ const Div = styled(motion.div)`
 const NavBarMenuItem = (props) => {
     const animationDelay = (props.delay===0) ? 0 : props.delay;
 
-    const animateDiv = useAnimation()
+    const animateDiv = useAnimation();
 
     const NavMenuDivWhileOpenMenu = {
         transform: [`translateY(0rem)`,`translateY(1rem)`],
@@ -72,7 +72,7 @@ const NavBarMenuItem = (props) => {
     }
         
     sequence();
-    
+
     return (
         <Div key={props.id} initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={{ opacity: 0 }}>{props.children}</Div>
     )

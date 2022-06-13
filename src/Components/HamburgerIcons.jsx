@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from "framer-motion";
-// import useCurrentWidth from "../Helpers/useCurrentWidth";
 
 const Icon = styled(motion.span)`
     background: linear-gradient(0deg,  #46B1E9, #3CA1DE, #3290D3, #287FC8, #0A4DA7, #072554, rgba(0,0,0,0.5));
@@ -10,58 +9,57 @@ const Icon = styled(motion.span)`
     height: 0.5rem;
     justify-self: end;
     border-radius: 50%;
-    &.topLine{
-        grid-area: topline;
-    }
-    &.middleLine{
-        grid-area: midline;
-    }
-    &.bottomLine{
-        grid-area: botline;
-    }
 `;
 
 const HamburgerIcon = (props) => {
-    
+
+    const lineHelper = (lineValuesArr) => { // returns one of the values in an arr ["4rem","3rem","2rem"] based on matching class
+        return(
+            props.class === "topLine" ? lineValuesArr[0] : 
+            props.class === "midLine" ? lineValuesArr[1] : 
+            lineValuesArr[2]
+        ) 
+    } 
+        
+
     /* THREE HORIZONTAL SLASHES ICON */
     const variantsIconOpenMenu = {
         toggledOnMenu: { //ENTER
-            transform: "scaleX(1)",
-        },
-        toggledOffMenu: { //EXIT
-            transform: "scaleX(0)",
-        },   
+            // transform: "scaleX(1)",
+            gridArea: ["2 / 1 / 3 / 2",`${lineHelper(['topline','midline','botline'])}`],
+            width: ["4rem",`${lineHelper([4,3,2])}rem`],
+        },  
     }
 
     /* SNOWFLAKE ICON */
     const variantsIconClosedMenu = {
-        toggledOnMenu: { //EXIT
-            transform: "scaleX(0)",
-        },
         toggledOffMenu: { //ENTER
-            transform: "scaleX(1)",
+            transform: [`rotate(0deg)`,`rotate(${lineHelper([45,90,-45])}deg)`],
+            gridArea: [`${lineHelper(['topline','midline','botline'])}`,"2 / 1 / 3 / 2"],
+            width: [`${lineHelper([4,3,2])}rem`,"4rem"],
         },     
     }
 
-    const closedMenuInitial = {
-        gridArea: "2 / 1 / 3 / 2",
-        width: "4rem",
-    }
+    /* SNOWFLAKE ICON */ //starts out reversed as THREE HORIZONTAL SLASHES ICON
+    // const closedMenuInitial = {
+    //     gridArea: ,
+    //     width: ,
+    // }
     
-    const openMenuInitial = {
-        width: `${props.class === "topLine" ? 4 : 
-            props.class === "midLine" ? 3 : 2
-        }rem`,
-    }
+    // /* THREE HORIZONTAL SLASHES ICON */ //starts out reversed as SNOWFLAKE ICON
+    // const openMenuInitial = {
+    //     gridArea: ,
+    //     width: ,
+    // }
 
     const IconPropsObj = {
         variants: props.toggleMenu ? variantsIconOpenMenu : variantsIconClosedMenu,
         animate: props.toggleMenu ? "toggledOnMenu" : "toggledOffMenu",
-        initial: props.toggleMenu ? openMenuInitial : closedMenuInitial,
+        // initial: props.toggleMenu ? openMenuInitial : closedMenuInitial,
     }
    
     return(
-        <Icon key={props.toggleMenu} layout {...IconPropsObj} className={props.class} /> // have to add key with toggle otherwise dynamic initial wont work
+        <Icon key={props.toggleMenu} layout {...IconPropsObj} className={props.class} transition={{duration: 2}}/> // have to add key with toggle otherwise dynamic initial wont work
     )
 }
 

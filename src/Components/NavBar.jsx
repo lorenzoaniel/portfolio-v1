@@ -12,9 +12,6 @@ const Nav = styled(motion.nav)`
     
     /* GRID/FLEX */
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-top: 1rem;
 `;
 
 const NavBar = (props) => {
@@ -42,7 +39,20 @@ const NavBar = (props) => {
     ]
 
     const NavInitial = {
-        gridArea: props.gridArea
+        gridArea: props.gridArea,
+        justifyContent: `space-evenly`,
+        flexDirection: `row`,
+        alignItems: `center`,
+        paddingTop: `1rem`,
+    }
+
+    const NavCloseMenu = {
+        justifyContent: `flex-end`,
+        paddingRight: `0.625rem`,
+    }
+
+    const NavOpenMenu = {
+        justifyContent: `space-evenly`,
     }
 
     const renderMenuItems = menuItems.map((menuItem, index) => {
@@ -50,7 +60,7 @@ const NavBar = (props) => {
     })
 
     return (
-            <Nav initial={NavInitial}>
+            <Nav initial={NavInitial} animate={toggleMenu ? NavOpenMenu : NavCloseMenu}>
                 <AnimatePresence>
                     {toggleMenu && renderMenuItems}
                 </AnimatePresence>

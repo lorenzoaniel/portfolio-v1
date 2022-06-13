@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from "framer-motion"
+import { motion , AnimatePresence} from "framer-motion"
 import HamburgerMenu from './HamburgerMenu';
 import { NavBarMenuItem } from './NavBarMenuItem';
 import { Link } from 'react-router-dom';
 import Title from './Title';
+import { nanoid } from 'nanoid';
 
 const Nav = styled(motion.nav)`
     /* GENERAL */
     
     /* GRID/FLEX */
-    
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -19,6 +19,8 @@ const Nav = styled(motion.nav)`
 
 const NavBar = (props) => {
     const [toggleMenu, setToggleMenu] = React.useState(true);
+
+    const randomId = nanoid();
 
     const handleClickMenu = () => {
         setToggleMenu(prevState => !prevState);
@@ -44,7 +46,7 @@ const NavBar = (props) => {
     }
 
     const renderMenuItems = menuItems.map((menuItem, index) => {
-       return ( <NavBarMenuItem delay={index} id={"NavBarMenu"+index}>{<Link to={menuItem.link}><Title id={"Title"+index} title={menuItem.title}/></Link>}</NavBarMenuItem> )
+       return ( <NavBarMenuItem delay={index} key={"NavBarMenu"+index+randomId}>{<Link to={menuItem.link}><Title key={"Title"+index+randomId} title={menuItem.title}/></Link>}</NavBarMenuItem> )
     })
 
     return (

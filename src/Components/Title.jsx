@@ -10,7 +10,6 @@ const H1 = styled.h1`
 
     animation: animateMenuItems 0.5s linear infinite;
     animation-direction: alternate;
-    animation-delay: 0.${props => props.delayVal}s;
     animation-play-state: paused;
 
     /* FONT */
@@ -51,7 +50,7 @@ const H1 = styled.h1`
 const Title = (props) => {
     return(
         props.title.split('').map((letter, index) => {
-            return( <H1 delayVal={index} className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
+            return( <H1 className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
         })
     )
 };

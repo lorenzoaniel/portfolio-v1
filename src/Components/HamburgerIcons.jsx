@@ -47,7 +47,6 @@ const HamburgerIcon = (props) => {
     const variantsIconClosedMenu = {
         toggledOffMenu: {
             transform: `scaleX(1) rotate(${lineHelper([45,90,-45])}deg)`,
-            // width: "4rem",
         },     
     }
 

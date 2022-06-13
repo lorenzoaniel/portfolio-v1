@@ -26,17 +26,10 @@ const MenuDiv = styled(motion.div)`
         "botline";
 `;
 
-const variantsMenuDiv = {
-    toggledOnMenu: {
-    },
-    toggledOffMenu: {
-    },   
-}
-
 const HamburgerMenu = (props) => {
 
     return(
-        <MenuDiv onClick={props.handleClickMenu} layout variants={variantsMenuDiv} animate={props.toggleMenu ? "toggledOnMenu" : "toggledOffMenu"}>
+        <MenuDiv onClick={props.handleClickMenu} initial={props.initial} animate={props.animate} transition={props.transition}>
             <HamburgerIcon toggleMenu={props.toggleMenu} class={"topLine"}/>
             <HamburgerIcon toggleMenu={props.toggleMenu} class={"midLine"}/>
             <HamburgerIcon toggleMenu={props.toggleMenu} class={"botLine"}/>

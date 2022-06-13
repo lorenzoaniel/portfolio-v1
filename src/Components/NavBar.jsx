@@ -15,6 +15,7 @@ const Nav = styled.nav`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding-top: 1rem;
 `;
 
 const Div = styled(motion.div)`
@@ -29,67 +30,61 @@ const Div = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* ANIMATION */
-    animation: elementFloat 2s linear infinite;
-    animation-direction: alternate;
-    
-    /* KEYFRAMES */ 
-    @keyframes elementFloat {
-        0%{
-            transform: translate3d(0, 0, 0);
-            box-shadow: 0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
-            0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
-        }
-        25%{
-            transform: translate3d(0, 0.3rem, 0);
-            box-shadow: 0rem 0.4rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem -0.4rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem 0.2rem 1rem 0.2rem rgba(54, 168, 239, 1) inset;
-        }
-        50%{
-            transform: translate3d(0, 0.6rem, 0);
-            box-shadow: 0rem 0.3rem 1.5rem 0.6rem rgba(54, 168, 239, 1),
-            0rem -0.3rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem 0rem 0.5rem 0rem rgba(54, 168, 239, 1) inset;
-        }
-        75%{
-            transform: translate3d(0, 0.8rem, 0);
-            box-shadow: 0rem 0.2rem 1.5rem 0.8rem rgba(54, 168, 239, 1),
-            0rem -0.2rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem -0.2rem 1rem 0.2rem rgba(54, 168, 239, 1) inset;
-        }
-        100%{
-            transform: translate3d(0, 1rem, 0);
-            box-shadow: 0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
-            0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
-            0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset;
-        }
-    }
-
-    /* NESTED */
-    &:hover .TitleSpan {
-        animation-play-state: running;
-    }
 `;
 
 const NavBar = (props) => {
-    const [toggleMenu, setToggleMenu] = React.useState(false);
+    const [toggleMenu, setToggleMenu] = React.useState(true);
+    const menuItems = [
+        {
+            title: "About",
+            link: "/"
+        },
+        {
+            title: "Projects",
+            link: "/projects"
+        },
+        {
+            title: "Contact",
+            link: "/contact"
+        },
+    ]
 
     const handleClickMenu = () => {
         setToggleMenu(prevState => !prevState);
     }
 
+    const NavMenuDivOpenMenuInitial = {
+        boxShadow: `0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,
+    }
+
+    const NavMenuDivOpenMenu = {
+        transform: [`translateY(0rem)`,`translateY(1rem)`],
+        boxShadow: [`0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,`0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
+        0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`],
+    }
+    
+    const NavMenuDivOpenMenuTransition = {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 2,
+        delay: props.key,
+    }
+
+    const renderMenuItems = menuItems.map((menuItem, index) => 
+        <Div key={index} initial={NavMenuDivOpenMenuInitial} animate={NavMenuDivOpenMenu} transition={NavMenuDivOpenMenuTransition}><Link to={menuItem.link}><Title title={menuItem.title}/></Link></Div>
+    )
+
     return (
         <Nav {...props}>
-            <Div><Link to={"/"}><Title title={"About"}/></Link></Div>
-            <Div><Link to={"/projects"}><Title title={"Projects"}/></Link></Div>
-            <Div><Link to={"/contact"}><Title title={"Contact"}/></Link></Div>
-            <HamburgerMenu handleClickMenu={handleClickMenu} toggleMenu={toggleMenu}></HamburgerMenu>
+            {toggleMenu && renderMenuItems}
+            <HamburgerMenu initial={NavMenuDivOpenMenuInitial} animate={NavMenuDivOpenMenu} transition={NavMenuDivOpenMenuTransition} handleClickMenu={handleClickMenu} toggleMenu={toggleMenu}></HamburgerMenu>
         </Nav>
     )
 }
-
 
 export default NavBar

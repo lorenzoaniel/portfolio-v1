@@ -75,7 +75,7 @@ const Div = styled(motion.div)`
 `;
 
 const NavBar = (props) => {
-    const [toggleMenu, setToggleMenu] = React.useState(true);
+    const [toggleMenu, setToggleMenu] = React.useState(false);
 
     const handleClickMenu = () => {
         setToggleMenu(prevState => !prevState);

@@ -9,6 +9,7 @@ const H1 = styled.h1`
 
     animation: animateMenuItems 0.5s linear infinite;
     animation-direction: alternate;
+    animation-delay: ${props => `${props.delay/4}s`};
     animation-play-state: paused;
 
     /* FONT */
@@ -46,12 +47,16 @@ const H1 = styled.h1`
     }
 `;
 
-const TitleWrapper = styled.div``;
+const TitleWrapper = styled.div`
+    &:hover .TitleSpan{
+        animation-play-state: running;
+    }
+`;
 
 const Title = (props) => {
 
     const titleItems = props.title.split('').map((letter, index) => {
-        return( <H1 className={"TitleSpan"} key={props.id+"TitleH1"+index}>{letter}</H1> )
+        return( <H1 delay={index} className={"TitleSpan"} key={props.id+"TitleH1"+index}>{letter}</H1> )
     })
 
     return(

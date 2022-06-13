@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { nanoid } from 'nanoid';
 
 const H1 = styled.h1`
     display: inline-block;
@@ -50,10 +49,9 @@ const H1 = styled.h1`
 const TitleWrapper = styled.div``;
 
 const Title = (props) => {
-    const randomId = nanoid();
 
     const titleItems = props.title.split('').map((letter, index) => {
-        return( <H1 className={"TitleSpan"} key={randomId+"TitleH1"+index} {...props}>{letter}</H1> )
+        return( <H1 className={"TitleSpan"} key={props.id+"TitleH1"+index}>{letter}</H1> )
     })
 
     return(

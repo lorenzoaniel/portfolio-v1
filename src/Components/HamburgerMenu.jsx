@@ -32,13 +32,23 @@ const HamburgerMenu = (props) => {
         0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,
     }
 
-    const HamburgerMenuDiv = {
+    const HamburgerMenuDivOpen = {
         transform: [`translateY(0rem)`,`translateY(1rem)`],
         boxShadow: [`0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
         0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
         0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,`0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
         0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
         0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`],
+    }
+
+    const HamburgerMenuDivClosed = {
+        transform: [`translateY(0rem)`,`translateY(1rem)`],
+        boxShadow: [`0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,`0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
+        0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`],
+        margin: `0rem 1rem`,
     }
 
     const HamburgerMenuDivTransition = {
@@ -49,7 +59,7 @@ const HamburgerMenu = (props) => {
     }
 
     return(
-        <MenuDiv onClick={props.handleClickMenu} initial={HamburgerMenuDivOpenMenuInitial} animate={HamburgerMenuDiv} transition={HamburgerMenuDivTransition}>
+        <MenuDiv onClick={props.handleClickMenu} initial={HamburgerMenuDivOpenMenuInitial} animate={props.toggleMenu ? HamburgerMenuDivOpen : HamburgerMenuDivClosed} transition={HamburgerMenuDivTransition}>
             <HamburgerIcon togglemenu={props.toggleMenu} cname={"topLine"}/>
             <HamburgerIcon togglemenu={props.toggleMenu} cname={"midLine"}/>
             <HamburgerIcon togglemenu={props.toggleMenu} cname={"botLine"}/>

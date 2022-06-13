@@ -52,13 +52,12 @@ const NavBarMenuItem = (props) => {
     }
 
     const NavMenuDivExitOpenMenu = {
-        opacity: [1,0],
-        transform: [`translateX(-50%)`,`translateX(100%)`],
-        display: [`block`,`none`],
-        padding: [`0rem`,`0rem 0.625rem`],
+        opacity: 0,
+        transform: [`translateX(-50%)`,`translateX(0%)`],
+        margin: `2rem 1rem`,
         transition: {
             duration: 0.5,
-            delay: animationDelay/2,
+            delay: animationDelay/3,
         },
     }
 

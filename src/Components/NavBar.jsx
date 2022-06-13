@@ -48,7 +48,6 @@ const NavBar = (props) => {
 
     const NavCloseMenu = {
         justifyContent: `flex-end`,
-        paddingRight: `0.625rem`,
     }
 
     const NavOpenMenu = {

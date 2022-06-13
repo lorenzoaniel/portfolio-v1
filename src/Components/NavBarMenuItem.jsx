@@ -43,19 +43,24 @@ const NavBarMenuItem = (props) => {
 
     const NavMenuDivStartOpenMenu = {
         opacity: 1,
+        transform: [`translateX(-50%)`,`translateX(0%)`],
+        transition: {
+            duration: 0.5,
+            delay: animationDelay/2,
+            repeatType: "reverse",
+        },
+    }
+
+    const NavMenuDivExitOpenMenu = {
+        opacity: [1,0],
+        transform: [`translateX(-50%)`,`translateX(100%)`],
+        display: [`block`,`none`],
+        padding: [`0rem`,`0rem 0.625rem`],
         transition: {
             duration: 0.5,
             delay: animationDelay/2,
         },
     }
-
-    // const NavMenuDivExitOpenMenu = {
-    //     opacity: 0,
-    //     transition: {
-    //         duration: 1,
-    //         delay: animationDelay/2,
-    //     },
-    // }
 
     const NavMenuDivOpenMenuInitial = {
         opacity: 0,
@@ -68,13 +73,13 @@ const NavBarMenuItem = (props) => {
     const sequence = async () => {
         await animateDiv.start(NavMenuDivStartOpenMenu);
         await animateDiv.start(NavMenuDivWhileOpenMenu); 
-        return
+        return;
     }
         
     sequence();
 
     return (
-        <Div initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={{ opacity: 0 }}>{props.children}</Div>
+        <Div initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={NavMenuDivExitOpenMenu}>{props.children}</Div>
     )
 }
 

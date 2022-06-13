@@ -20,46 +20,45 @@ const HamburgerIcon = (props) => {
             lineValuesArr[2]
         ) 
     } 
-        
+    
+    /* THREE HORIZONTAL SLASHES ICON OPENMENU INITIAL*/
+    const openMenuInitial = {
+        transform: "scaleX(0)",
+        gridArea: `${lineHelper(['topline','midline','botline'])}`,
+        width: `${lineHelper([4,3,2])}rem`,
+    }
 
-    /* THREE HORIZONTAL SLASHES ICON */
+    /* THREE HORIZONTAL SLASHES ICON OPENMENU TOGGLE */
     const variantsIconOpenMenu = {
-        toggledOnMenu: { //ENTER
-            // transform: "scaleX(1)",
-            gridArea: ["2 / 1 / 3 / 2",`${lineHelper(['topline','midline','botline'])}`],
-            width: ["4rem",`${lineHelper([4,3,2])}rem`],
+        toggledOnMenu: {
+            transform: `scaleX(1)`,
+            // width: `${lineHelper([4,3,2])}rem`,
         },  
     }
 
-    /* SNOWFLAKE ICON */
-    const variantsIconClosedMenu = {
-        toggledOffMenu: { //ENTER
-            transform: [`rotate(0deg)`,`rotate(${lineHelper([45,90,-45])}deg)`],
-            gridArea: [`${lineHelper(['topline','midline','botline'])}`,"2 / 1 / 3 / 2"],
-            width: [`${lineHelper([4,3,2])}rem`,"4rem"],
-        },     
+    /* SNOWFLAKE ICON CLOSEDMENU INITIAL*/
+    const closedMenuInitial = {
+        transform: "scaleX(1) rotate(0deg)",
+        gridArea: "2 / 1 / 3 / 2",
+        width: "4rem"
     }
 
-    /* SNOWFLAKE ICON */ //starts out reversed as THREE HORIZONTAL SLASHES ICON
-    // const closedMenuInitial = {
-    //     gridArea: ,
-    //     width: ,
-    // }
-    
-    // /* THREE HORIZONTAL SLASHES ICON */ //starts out reversed as SNOWFLAKE ICON
-    // const openMenuInitial = {
-    //     gridArea: ,
-    //     width: ,
-    // }
+    /* SNOWFLAKE ICON CLOSEDMENU TOGGLE*/
+    const variantsIconClosedMenu = {
+        toggledOffMenu: {
+            transform: `scaleX(1) rotate(${lineHelper([45,90,-45])}deg)`,
+            // width: "4rem",
+        },     
+    }
 
     const IconPropsObj = {
         variants: props.toggleMenu ? variantsIconOpenMenu : variantsIconClosedMenu,
         animate: props.toggleMenu ? "toggledOnMenu" : "toggledOffMenu",
-        // initial: props.toggleMenu ? openMenuInitial : closedMenuInitial,
+        initial: props.toggleMenu ? openMenuInitial : closedMenuInitial,
     }
    
     return(
-        <Icon key={props.toggleMenu} layout {...IconPropsObj} className={props.class} transition={{duration: 2}}/> // have to add key with toggle otherwise dynamic initial wont work
+        <Icon key={props.toggleMenu} layout {...IconPropsObj} className={props.class} transition={{duration: 1}}/> // have to add key with toggle otherwise dynamic initial wont work
     )
 }
 

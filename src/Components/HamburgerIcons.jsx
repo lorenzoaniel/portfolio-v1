@@ -15,8 +15,8 @@ const HamburgerIcon = (props) => {
 
     const lineHelper = (lineValuesArr) => { // returns one of the values in an arr ["4rem","3rem","2rem"] based on matching class
         return(
-            props.class === "topLine" ? lineValuesArr[0] : 
-            props.class === "midLine" ? lineValuesArr[1] : 
+            props.cname === "topLine" ? lineValuesArr[0] : 
+            props.cname === "midLine" ? lineValuesArr[1] : 
             lineValuesArr[2]
         ) 
     } 
@@ -51,13 +51,13 @@ const HamburgerIcon = (props) => {
     }
 
     const IconPropsObj = {
-        variants: props.toggleMenu ? variantsIconOpenMenu : variantsIconClosedMenu,
-        animate: props.toggleMenu ? "toggledOnMenu" : "toggledOffMenu",
-        initial: props.toggleMenu ? openMenuInitial : closedMenuInitial,
+        variants: props.togglemenu ? variantsIconOpenMenu : variantsIconClosedMenu,
+        animate: props.togglemenu ? "toggledOnMenu" : "toggledOffMenu",
+        initial: props.togglemenu ? openMenuInitial : closedMenuInitial,
     }
    
     return(
-        <Icon key={props.toggleMenu} {...IconPropsObj} className={props.class} transition={{duration: 1}}/> // have to add key with toggle otherwise dynamic initial wont work
+        <Icon key={props.togglemenu} {...IconPropsObj} className={props.cname} transition={{duration: 1}}/> // have to add key with toggle otherwise dynamic initial wont work
     )
 }
 

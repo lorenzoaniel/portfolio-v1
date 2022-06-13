@@ -47,11 +47,16 @@ const H1 = styled.h1`
     }
 `;
 
+const TitleWrapper = styled.div``;
+
 const Title = (props) => {
+
+    const titleItems = props.title.split('').map((letter, index) => {
+        return( <H1 className={"TitleSpan"} key={props.id+"TitleH1"+index} {...props}>{letter}</H1> )
+    })
+
     return(
-        props.title.split('').map((letter, index) => {
-            return( <H1 className={"TitleSpan"} key={index} {...props}>{letter}</H1> )
-        })
+        <TitleWrapper key={props.id}>{titleItems}</TitleWrapper>
     )
 };
 

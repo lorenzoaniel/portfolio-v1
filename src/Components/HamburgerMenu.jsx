@@ -9,7 +9,6 @@ const MenuDiv = styled(motion.div)`
     /* GENERAL */
     ${defaultMenuItemStyle}
     background-size: cover;
-    
 
     /* GRID/FLEX */
     flex-basis: 5%;
@@ -51,9 +50,9 @@ const HamburgerMenu = (props) => {
 
     return(
         <MenuDiv onClick={props.handleClickMenu} initial={HamburgerMenuDivOpenMenuInitial} animate={HamburgerMenuDiv} transition={HamburgerMenuDivTransition}>
-            <HamburgerIcon toggleMenu={props.toggleMenu} class={"topLine"}/>
-            <HamburgerIcon toggleMenu={props.toggleMenu} class={"midLine"}/>
-            <HamburgerIcon toggleMenu={props.toggleMenu} class={"botLine"}/>
+            <HamburgerIcon togglemenu={props.toggleMenu} cname={"topLine"}/>
+            <HamburgerIcon togglemenu={props.toggleMenu} cname={"midLine"}/>
+            <HamburgerIcon togglemenu={props.toggleMenu} cname={"botLine"}/>
         </MenuDiv>
     )
 }

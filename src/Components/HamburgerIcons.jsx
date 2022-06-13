@@ -22,11 +22,7 @@ const Icon = styled(motion.span)`
 `;
 
 const HamburgerIcon = (props) => {
-    // let width = useCurrentWidth();
-    // let topLineValForDynamicResizing = { width: width / 20.0625 };
-    // let midLineValForDynamicResizing = { width: width / (props.toggleMenu ? 25 : 20.0625) };
-    // let botLineValForDynamicResizing = { width: width / (props.toggleMenu ? 35.125 : 20.0625) };
-
+    
     /* THREE HORIZONTAL SLASHES ICON */
     const variantsIconOpenMenu = {
         toggledOnMenu: { //ENTER

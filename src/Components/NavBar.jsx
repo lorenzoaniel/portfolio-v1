@@ -43,7 +43,6 @@ const NavBar = (props) => {
         justifyContent: `space-evenly`,
         flexDirection: `row`,
         alignItems: `center`,
-        paddingTop: `1rem`,
     }
 
     const NavCloseMenu = {

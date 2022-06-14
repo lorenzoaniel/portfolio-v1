@@ -5,7 +5,7 @@ import Projects from './Pages/Projects';
 import Contact from './Pages/Contact';
 import NavBar from './Components/NavBar';
 import styled from 'styled-components';
-import SnowBackground from './Mixins/SnowBackground';
+import SnowBackground from './Components/SnowBackground';
 import AppConfig from './Configs/AppConfig';
 
 const Main = styled.div`
@@ -16,6 +16,7 @@ const Main = styled.div`
   grid-template-areas: 
     "navbar"
     "main";
+  padding: 1rem;
 `;
 
 function App() {

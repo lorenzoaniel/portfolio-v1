@@ -45,7 +45,7 @@ const NavBarMenuItem = (props) => {
         opacity: 1,
         transform: [`translateX(-50%)`,`translateX(0%)`],
         transition: {
-            duration: 0.5,
+            duration: 0.3,
             delay: animationDelay/2,
             repeatType: "reverse",
         },
@@ -53,11 +53,10 @@ const NavBarMenuItem = (props) => {
 
     const NavMenuDivExitOpenMenu = {
         opacity: 0,
-        transform: [`translateX(-50%)`,`translateX(0%)`],
-        margin: `2rem 1rem`,
+        transform: [`translateX(-30%)`,`translateX(0%)`],
         transition: {
-            duration: 0.5,
-            delay: animationDelay/3,
+            duration: 0.3,
+            delay: animationDelay/2,
         },
     }
 

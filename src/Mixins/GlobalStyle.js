@@ -8,8 +8,9 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
+        min-height: 667px;
         height: 100vh;
-        min-width: 530px;
+        min-width: 375px;
     }
 
     body, #root {

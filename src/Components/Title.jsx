@@ -7,7 +7,7 @@ const H1 = styled.h1`
     background-clip: text;
     color: transparent;
 
-    animation: animateMenuItems 0.5s linear infinite;
+    animation: animateMenuItems 0.3s linear infinite;
     animation-direction: alternate;
     animation-delay: ${props => `${props.delay/4}s`};
     animation-play-state: paused;

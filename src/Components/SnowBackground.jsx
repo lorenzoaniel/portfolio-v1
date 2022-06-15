@@ -15,15 +15,11 @@ const Div = styled.div`
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: inherit;
+
 `;
 
 const FrameDiv = styled.div`
     height: inherit;
-    /* border: 1rem solid rgba(54, 168, 239, 1);
-    /* border-image: url(${imgIce}) 3 stretch; */
-    /* box-shadow: 0rem 0rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset,
-        0rem 0rem 1.5rem 0.4rem rgba(54, 168, 239, 1) inset,
-        0rem 0rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset; */
 `;
 
 const Span = styled.span.attrs(props => ({
@@ -61,7 +57,8 @@ const Span = styled.span.attrs(props => ({
         opacity: 0.25;
     }
     100%{
-        transform:  translateY(${ props => props.heightLimit}px);
+        /* VERY IMPORTANT THAT THE 0.95 is THERE SO SNOW DOESNT GO OUT OF BOUNDS AND TRTIGGER SPORATIC SCROLL BAR APPEARANCE */
+        transform:  translateY(${ props => props.heightLimit * 0.95}px);
         opacity: 0;
     }
 }`;

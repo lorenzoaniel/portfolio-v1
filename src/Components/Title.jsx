@@ -4,8 +4,10 @@ import styled from 'styled-components';
 const H1 = styled.h1`
     display: inline-block;
     background: linear-gradient(0deg, #5AD3FF, #50C2F4, #46B1E9, #3CA1DE, #3290D3, #287FC8, #1E6EBD, #145EB2, #0A4DA7, #003C9C);
-    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
+    background-clip: text;
 
     animation: animateMenuItems 0.3s linear infinite;
     animation-direction: alternate;
@@ -13,13 +15,8 @@ const H1 = styled.h1`
     animation-play-state: paused;
 
     /* FONT */
-    font-family: 'Iceberg', cursive;
     font-size: 3.5rem;
-    font-weight: 400;
-    text-decoration: none; 
     text-align: center;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0.1rem 0.1rem rgba(0,0,0,0.5);
     
 
     @keyframes animateMenuItems{

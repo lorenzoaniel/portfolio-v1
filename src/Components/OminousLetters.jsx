@@ -5,12 +5,13 @@ import { motion } from 'framer-motion';
 
 const H1 = styled(motion.h1)`
     display: inline-block;
-    background: linear-gradient(0deg, #5AD3FF, #50C2F4, #46B1E9, #3CA1DE, #3290D3, #287FC8, #1E6EBD, #145EB2, #0A4DA7, #003C9C);
+    background: linear-gradient(90deg, rgba(245,245,245,1) 30%, rgba(250,250,250,1) 35%, rgba(255,255,255,1) 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
     background-clip: text;
     flex-grow: 1;
+    /* text-shadow: 0rem 0rem 1rem rgba(0,0,0,1); */
 
     /* FONT */
     font-size: 1fr;
@@ -25,6 +26,7 @@ const Wrapper = styled(motion.div)`
     justify-content: center;
     align-content: space-around; 
     padding: 1fr;
+    filter: drop-shadow(0rem 1rem 2rem rgba(255, 255, 255,1));
     /* border: 1rem solid orange; */
 `;
 

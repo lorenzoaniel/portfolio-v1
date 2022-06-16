@@ -2,14 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import getQuotes from '../Helpers/getQuotes';
 import OminousLetters from './OminousLetters';
-import ominousSignsStyle from '../Mixins/OminousSignsStyle';
-import { motion } from 'framer-motion';
+import ominousSignsStyle from '../Mixins/Styles/OminousSignsStyle';
 
-const ButtonComp = styled(motion.button)`
-    ${ominousSignsStyle}
-    /* background-image: url(' https://images.pexels.com/photos/4504754/pexels-photo-4504754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); */
-    background-size: contain;
-    border-radius: 50%;
+const PortalWrapper = styled.div`
+  /* GENERAL */
+  background: transparent;
+  width: 100%;
+  height: 100%;
+`;
+
+const ButtonComp = styled.button`
+  /* GENERAL */
+  ${ominousSignsStyle}
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,1) 10%, rgba(5,100,176,0.5) 67%, rgba(5,30,61,0.2) 91%);
+  border-radius: 5%;
+  border: none;
+  z-index: 999;
 `;
 
 const DungeonButton = (props) => {
@@ -22,17 +31,11 @@ const DungeonButton = (props) => {
     return () => clearInterval(interval);
   }, [props.quotesArr, props.changeTime]);
 
-  const DungeonButtonInitial = {
-    gridArea: props.gridArea,
-  }
-
-  const DungeonButtonMotionProps = {
-    initial: DungeonButtonInitial,
-  }
-
   return (
-    <ButtonComp {...DungeonButtonMotionProps}>
-      <OminousLetters title={quote}/>
+    <ButtonComp>
+      <PortalWrapper>
+        <OminousLetters title={quote}/>
+      </PortalWrapper>
     </ButtonComp>
   );
 }

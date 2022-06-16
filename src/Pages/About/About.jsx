@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import AboutIntroduction from '../Components/AboutIntroduction';
-import DontPressWarning from '../Components/DontPressWarning';
-import { motion } from 'framer-motion';
+import AboutIntroduction from '../../Components/AboutIntroduction';
+import DontPressWarning from '../../Components/DontPressWarning';
+import basePagesDivStyle from '../../Mixins/Styles/BasePagesDivStyle';
 
 const AboutPageConfig = {
   aboutIntro: {
@@ -13,7 +13,9 @@ const AboutPageConfig = {
   }
 }
 
-const Div = styled(motion.div)`
+const Div = styled.div`
+  ${basePagesDivStyle}
+  grid-area: ${props => props.gridArea};
   display: grid;
   justify-content: center;
   align-items: center;
@@ -27,17 +29,10 @@ const Div = styled(motion.div)`
 `;
 
 const About = (props) => {
-
-  const AboutInitial = {
-    gridArea: props.gridArea,
-  }
-
-  const AboutMotionProps = {
-    initial: AboutInitial,
-  }
+  // const [enableDungeon, setEnableDungeon] = React.useState(false);
   
-  return (
-    <Div {...AboutMotionProps}>
+  return (  
+    <Div {...props}>
       <AboutIntroduction gridArea={AboutPageConfig.aboutIntro.gridArea}/>
       <DontPressWarning gridArea={AboutPageConfig.dontPress.gridArea}/>
     </Div>

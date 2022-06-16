@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import basePagesDivStyle from '../../Mixins/Styles/BasePagesDivStyle';
 
 const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${basePagesDivStyle}
   grid-area: ${props => props.gridArea};
 `;
 

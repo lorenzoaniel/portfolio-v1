@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import getQuotes from '../Helpers/getQuotes';
 import OminousLetters from './OminousLetters';
 import ominousSignsStyle from '../Mixins/OminousSignsStyle';
+import { motion } from 'framer-motion';
 
-const ButtonComp = styled.button`
+const ButtonComp = styled(motion.button)`
     ${ominousSignsStyle}
-    grid-area: ${props => props.gridArea};
+    /* background-image: url(' https://images.pexels.com/photos/4504754/pexels-photo-4504754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); */
+    background-size: contain;
+    border-radius: 50%;
 `;
 
 const DungeonButton = (props) => {
@@ -14,14 +17,21 @@ const DungeonButton = (props) => {
   
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setQuote(() => getQuotes(props.quotesArr))
+        setQuote(() => getQuotes(props.quotesArr))
     }, props.changeTime);
     return () => clearInterval(interval);
-  }, []);
+  }, [props.quotesArr, props.changeTime]);
 
-  
+  const DungeonButtonInitial = {
+    gridArea: props.gridArea,
+  }
+
+  const DungeonButtonMotionProps = {
+    initial: DungeonButtonInitial,
+  }
+
   return (
-    <ButtonComp {...props}>
+    <ButtonComp {...DungeonButtonMotionProps}>
       <OminousLetters title={quote}/>
     </ButtonComp>
   );

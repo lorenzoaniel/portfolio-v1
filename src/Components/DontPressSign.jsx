@@ -16,6 +16,7 @@ const DivWrapper = React.memo(styled.div`
     height: 100%;
     width: 100%;
     filter: drop-shadow(0rem 1rem 0.5rem rgba(0, 0, 0,1));
+    /* filter: blur(1); */
     grid-area: ${props => props.gridArea};
 `);
 

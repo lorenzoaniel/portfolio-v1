@@ -11,7 +11,6 @@ const H1 = styled(motion.h1)`
     color: transparent;
     background-clip: text;
     flex-grow: 1;
-    /* text-shadow: 0rem 0rem 1rem rgba(0,0,0,1); */
 
     /* FONT */
     font-size: 1fr;
@@ -27,7 +26,6 @@ const Wrapper = styled(motion.div)`
     align-content: space-around; 
     padding: 1fr;
     filter: drop-shadow(0rem 1rem 2rem rgba(255, 255, 255,1));
-    /* border: 1rem solid orange; */
 `;
 
 const OminousLetters = (props) => {

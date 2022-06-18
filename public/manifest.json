@@ -1,0 +1,6 @@
+{
+    "short_name": "portfolioV1",
+    "name": "Mikhail Lorenzo Aniel",
+    "start_url": "./index.html",
+    "display": "standalone"
+  }

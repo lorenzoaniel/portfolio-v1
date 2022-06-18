@@ -1,37 +1,17 @@
-/*FRAME IMPORTS*/
 import React from 'react';
-import styled, {css} from 'styled-components';
-import { Link } from 'react-router-dom';
-
-/*COMPONENT IMPORTS*/
-import Title from './Title';
+import styled from 'styled-components';
+import { motion , AnimatePresence} from "framer-motion"
 import HamburgerMenu from './HamburgerMenu';
-import NavBarMenuItem from './NavBarMenuItem';
-
-/*HELPER IMPORTS*/
+import { NavBarMenuItem } from './NavBarMenuItem';
+import { Link } from 'react-router-dom';
+import Title from './Title';
 import { nanoid } from 'nanoid';
 
-/*STYLING/ANIMATIONS IMPORTS*/
-import titleLetterWiggleAnimation from '../Mixins/Animations/TitleLetterWiggleAnimation';
-
-const NavBarDivOpenToggleStyle = css`
-    justify-content: center;
-`;
-
-const NavBarDivClosedToggleStyle = css`
-    justify-content: flex-end;
-`;
-
-const NavBarDiv = styled.nav`
+const Nav = styled(motion.nav)`
     /* GENERAL */
-    ${props => props.toggleMenu ? NavBarDivOpenToggleStyle : NavBarDivClosedToggleStyle}
     
     /* GRID/FLEX */
     display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    /* ANIMATIONS */
 `;
 
 const NavBar = (props) => {
@@ -43,15 +23,47 @@ const NavBar = (props) => {
         setToggleMenu(prevState => !prevState);
     }
 
-    const renderMenuItems = props.menuItems.map((menuItem, index) => {
-       return ( <NavBarMenuItem toggleMenu={toggleMenu} delay={index} key={"NavBarMenu"+index+randomId}>{<Link to={menuItem.link}><Title animation={titleLetterWiggleAnimation} key={"Title"+index+randomId} title={menuItem.title}/></Link>}</NavBarMenuItem> )
+    const menuItems = [
+        {
+            title: "About",
+            link: "/"
+        },
+        {
+            title: "Projects",
+            link: "/projects"
+        },
+        {
+            title: "Contact",
+            link: "/contact"
+        },
+    ]
+
+    const NavInitial = {
+        gridArea: props.gridArea,
+        justifyContent: `space-evenly`,
+        flexDirection: `row`,
+        alignItems: `center`,
+    }
+
+    const NavCloseMenu = {
+        justifyContent: `flex-end`,
+    }
+
+    const NavOpenMenu = {
+        justifyContent: `space-evenly`,
+    }
+
+    const renderMenuItems = menuItems.map((menuItem, index) => {
+       return ( <NavBarMenuItem delay={index} key={"NavBarMenu"+index+randomId}>{<Link to={menuItem.link}><Title key={"Title"+index+randomId} title={menuItem.title}/></Link>}</NavBarMenuItem> )
     })
 
     return (
-        <NavBarDiv {...props}>
-            {toggleMenu && renderMenuItems}
-            <HamburgerMenu handleClickMenu={handleClickMenu} toggleMenu={toggleMenu}></HamburgerMenu>
-        </NavBarDiv>
+            <Nav initial={NavInitial} animate={toggleMenu ? NavOpenMenu : NavCloseMenu}>
+                <AnimatePresence>
+                    {toggleMenu && renderMenuItems}
+                </AnimatePresence>
+                <HamburgerMenu handleClickMenu={handleClickMenu} toggleMenu={toggleMenu}></HamburgerMenu>
+            </Nav>
     )
 }
 

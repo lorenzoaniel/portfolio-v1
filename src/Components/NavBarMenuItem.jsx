@@ -1,41 +1,84 @@
 import React from 'react';
-import styled from 'styled-components';
-import defaultMenuItemDivStyle from '../Mixins/Styles/DefaultMenuItemDivStyle';
+import styled, {css} from 'styled-components';
+import { motion, useAnimation } from "framer-motion"
 import imgIce from '../Assets/imgs/fabrizio-conti-aExT3y92x5o-unsplash.jpg';
-// import navMenuDivAnimation from '../Mixins/Animations/NavMenuDivAnimation';
-import { CSSTransition } from 'react-transition-group';
 
-const NavBarMenuItemDiv = styled.div`
+const defaultMenuItemStyle = css`
     /* GENERAL */
-    ${defaultMenuItemDivStyle}
+    height: 100%;
     background-image: url(${imgIce});
+    background-size: contain;
+    border-radius: 1.25rem;
 
-    /* ANIMATION */
-    &.navMenuDivAnimation-enter {
-        opacity: 0;
-    }
-    &.navMenuDivAnimation-enter-active {
-        opacity: 1;
-    }
-    &.navMenuDivAnimation-exit {
-        opacity: 1;
-    }
-    &.navMenuDivAnimation-exit-active {
-        opacity: 0;
-    }
+    /* GRID/FLEX */
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Div = styled(motion.div)`
+    ${defaultMenuItemStyle}
 `;
 
 const NavBarMenuItem = (props) => {
+    const animationDelay = (props.delay===0) ? 0 : props.delay;
+
+    const animateDiv = useAnimation();
+
+    const NavMenuDivWhileOpenMenu = {
+        transform: [`translateY(0rem)`,`translateY(1rem)`],
+        boxShadow: [`0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,`0rem 0.1rem 1.5rem 1rem rgba(54, 168, 239, 1),
+        0rem -0.1rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`],
+        transition: {
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 1,
+            delay: `0.${animationDelay}`,
+        },
+    }
+
+    const NavMenuDivStartOpenMenu = {
+        opacity: 1,
+        transform: [`translateX(-50%)`,`translateX(0%)`],
+        transition: {
+            duration: 0.3,
+            delay: animationDelay/2,
+            repeatType: "reverse",
+        },
+    }
+
+    const NavMenuDivExitOpenMenu = {
+        opacity: 0,
+        transform: [`translateX(-30%)`,`translateX(0%)`],
+        transition: {
+            duration: 0.3,
+            delay: animationDelay/2,
+        },
+    }
+
+    const NavMenuDivOpenMenuInitial = {
+        opacity: 0,
+        transform: `translateY(0rem)`,
+        boxShadow: `0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1),
+        0rem -0.5rem 1.5rem 0.4rem rgba(54, 168, 239, 1),
+        0rem 0.5rem 1.5rem 0.5rem rgba(54, 168, 239, 1) inset`,
+    }
+
+    const sequence = async () => {
+        await animateDiv.start(NavMenuDivStartOpenMenu);
+        await animateDiv.start(NavMenuDivWhileOpenMenu); 
+        return;
+    }
+        
+    sequence();
 
     return (
-        <CSSTransition 
-            in={props.toggleMenu}
-            timeout={1000}
-            classNames={"navMenuDivAnimation"}
-        >
-            <NavBarMenuItemDiv {...props}>{props.children}</NavBarMenuItemDiv>
-        </CSSTransition>
+        <Div initial={NavMenuDivOpenMenuInitial} animate={animateDiv} exit={NavMenuDivExitOpenMenu}>{props.children}</Div>
     )
 }
 
-export default NavBarMenuItem; 
+export { NavBarMenuItem, defaultMenuItemStyle}

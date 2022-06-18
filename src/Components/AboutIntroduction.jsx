@@ -7,6 +7,7 @@ const Div = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* border: 0.5rem solid black; */
 `;
 
 const AboutIntroduction = (props) => {

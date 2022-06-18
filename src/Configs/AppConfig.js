@@ -10,21 +10,7 @@ const AppConfig = () => {
             gridArea: "main"
         },
         navbar: {
-            gridArea: "navbar",
-            menuItems: [
-                {
-                    title: "About",
-                    link: "/"
-                },
-                {
-                    title: "Projects",
-                    link: "/projects"
-                },
-                {
-                    title: "Contact",
-                    link: "/contact"
-                },
-            ]
+            gridArea: "navbar"
         }
     }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
-import About from './Pages/About/About';
-import Projects from './Pages/Projects/Projects';
-import Contact from './Pages/Contact/Contact';
+import About from './Pages/About';
+import Projects from './Pages/Projects';
+import Contact from './Pages/Contact';
 import NavBar from './Components/NavBar';
 import styled from 'styled-components';
 import SnowBackground from './Components/SnowBackground';
@@ -24,7 +24,7 @@ function App() {
     <>
       <SnowBackground>
         <Main>
-          <NavBar menuItems={AppConfig().navbar.menuItems} gridArea={AppConfig().navbar.gridArea}/>
+          <NavBar gridArea={AppConfig().navbar.gridArea}/>
           <Routes>
             <Route path={"/"} element={<About gridArea={AppConfig().about.gridArea} />}/>
             <Route path={"/projects"} element={<Projects gridArea={AppConfig().projects.gridArea} />}/>

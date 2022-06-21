@@ -1,10 +1,17 @@
+/* FRAME IMPORTS */
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import pressMeTaunts from '../Local-Data/TauntingButtonData/PressMeTaunts';
-import dontPressWarning from '../Local-Data/DontPressData/DontPressWarningQuotes';
+
+/* COMPONENT IMPORTS */
 import DungeonButton from './DungeonButton';
 import DontPressSign from './DontPressSign';
+
+/* DATA IMPORTS */
+import pressMeTaunts from '../Local-Data/TauntingButtonData/PressMeTaunts';
+import dontPressWarning from '../Local-Data/DontPressData/DontPressWarningQuotes';
+
+/* ASSET IMPORTS */
 import woodSign from '../Assets/imgs/pexels-mike-b-381700.jpg';
 import warningSignImgTop from '../Assets/imgs/pexels-fwstudio-129723.jpg';
 import warningSignImgLeft from '../Assets/imgs/pexels-adrien-olichon-2931290.jpg';
@@ -12,7 +19,14 @@ import warningSignImgRight from '../Assets/imgs/pexels-mudassir-ali-3127410.jpg'
 import warningSignImgBottom from '../Assets/imgs/pexels-pixabay-207328.jpg';
 
 const Div = styled(motion.div)`
+    /* GENERAL */
     height: 100%;
+    padding: 1rem;
+    box-shadow: 0rem 0rem 2rem 2rem rgba(0,0,0,0.5) inset;
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 98% 10%, 100% 24%, 96% 46%, 100% 100%, 0 100%, 4% 79%, 0 56%, 2% 18%);
+
+    /* GRID/FLEX */
     display: grid;
     justify-items: center;
     align-items: center; 
@@ -23,15 +37,13 @@ const Div = styled(motion.div)`
       "leftSign centerButton rightSign"
       "botSign botSign ."
     ;
-    box-shadow: 0rem 0rem 2rem 2rem rgba(0,0,0,0.5) inset;
     grid-gap: 1rem;
-    background-size: cover;
-    clip-path: polygon(0 0, 100% 0, 98% 10%, 100% 24%, 96% 46%, 100% 100%, 0 100%, 4% 79%, 0 56%, 2% 18%);
 `;
 
 const WoodenSignShadow = styled.div`
-  height: 100%;
-  filter: drop-shadow(0rem 1rem 0.5rem rgba(0, 0, 0,1));
+    /* GENERAL */
+    height: 100%;
+    filter: drop-shadow(0rem 1rem 0.5rem rgba(0, 0, 0,1));
 `;
 
 const DontPressWarning = (props) => {

@@ -1,11 +1,20 @@
+/* FRAME IMPORTS */
 import React from 'react';
 import styled from 'styled-components';
-import getQuotes from '../Helpers/getQuotes';
-import OminousLetters from './OminousLetters';
-import ominousSignsStyle from '../Mixins/OminousSignsStyle';
 import { motion } from 'framer-motion';
 
+/* COMPONENT IMPORTS */
+import OminousLetters from './OminousLetters';
+
+/* STYLE IMPORTS */
+import ominousSignsStyle from '../Mixins/OminousSignsStyle';
+
+/* HELPER IMPORTS */
+import getQuotes from '../Helpers/getQuotes';
+
+
 const ButtonComp = styled(motion.button)`
+    /* GENERAL */
     ${ominousSignsStyle}
     background-size: contain;
     border-radius: 5%;

@@ -1,22 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import aboutIntro from '../Local-Data/AboutIntroductionData/AboutIntro';
+import AboutIntroWords from './AboutIntroWords';
 
-const Div = styled.div`
-    display: flex;
+const introString = aboutIntro.intro.split(" ");
+
+const Div = styled(motion.div)`
+    /* GENERAL */
     height: 100%;
-    flex-direction: column;
+    display: flex;
+    padding: 1rem;
+    
+    /* GRID/FLEX */
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* border: 0.5rem solid black; */
+    
+    /* FONTS */
+    font-size: 190%;
 `;
 
 const AboutIntroduction = (props) => {
+
+  const AboutIntroductionDivVariants = {
+    AboutIntroductionInitial: {
+      clipPath: props.clipPath,
+      background: `url(${props.signImg})`,
+      backgroundSize: `contain`,
+    }
+  }
+
+  const AboutIntroductionDivMotionProps = {
+    initial: AboutIntroductionDivVariants.AboutIntroductionInitial,
+    variant: AboutIntroductionDivVariants,
+    // animate: AboutIntroductionDivVariants.letterAppearAnimation,
+  }
+  
+
+  const renderIntro = introString.map((word, index) => {
+    return <AboutIntroWords delay={index} key={'AboutIntroSpan'+index}>{word}</AboutIntroWords>
+  })
+  
+
   return (
-    <Div {...props}>
-          Hi! my name is Lorenzo. I am an IT enthusiast and currently interested in a junior front-end development role.
-          Feel free to check out my website and some projects I showcase!
-          Oh, and if possible please ignore the glitchy magic looking part below, I am still new to React and some things are a little finnicky.
-          Have fun exploring! 
+    <Div {...AboutIntroductionDivMotionProps}>
+          {renderIntro}
     </Div>
   );
 }

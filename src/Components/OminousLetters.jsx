@@ -32,44 +32,46 @@ const OminousLetters = (props) => {
     const id = nanoid();
 
     /*OminousLetters*/
-
-    const OminousLettersInitial = {
-        opacity: 0,
-    }
-
-    const OminousLettersAnimate = {
-        opacity: 1,
-    }
-
-    const OminousLettersExit = {
-    }
+    // const OminousLettersVariants = {
+    //     ominousLettersInitial: {
+    //         opacity: 0,
+    //         scale: 0,
+    //     },
+    //     ominousLettersAnimate: {
+    //         opacity: 1,
+    //         scale: 1,
+    //     },
+    //     ominousLettersExit: {
+    //     }
+    // }
     
-    const OminousLettersMotionProps = {
-        initial: OminousLettersInitial,
-        animate: OminousLettersAnimate,
-        exit: OminousLettersExit,
-    }
+    // const OminousLettersMotionProps = {
+    //     variant: OminousLettersVariants,
+    //     initial: OminousLettersVariants.ominousLettersInitial,
+    //     animate: OminousLettersVariants.ominousLettersAnimate,
+    //     exit: OminousLettersVariants.ominousLettersExit,
+    // }
 
-    /*OminousLettersWrapper*/
+    // /*OminousLettersWrapper*/
 
-    const OminousLettersWrapperInitial = {}
+    // const OminousLettersWrapperInitial = {}
 
-    const OminousLettersWrapperAnimate = {}
+    // const OminousLettersWrapperAnimate = {}
 
-    const OminousLettersWrapperExit = {}
+    // const OminousLettersWrapperExit = {}
     
-    const OminousLettersWrapperMotionProps = {
-        initial: OminousLettersWrapperInitial,
-        animate: OminousLettersWrapperAnimate,
-        exit: OminousLettersWrapperExit,
-    }
+    // const OminousLettersWrapperMotionProps = {
+    //     initial: OminousLettersWrapperInitial,
+    //     animate: OminousLettersWrapperAnimate,
+    //     exit: OminousLettersWrapperExit,
+    // }
 
     const titleItems = props.title.split(' ').map((letter, index) => {
-        return( <H1 {...OminousLettersMotionProps} delay={index} className={"OminousLetterSpan"} key={"OminousLetterSpan"+index+id}>{letter}</H1> )
+        return( <H1 delay={index} className={"OminousLetterSpan"} key={"OminousLetterSpan"+index+id}>{letter}</H1> )
     })
 
     return(
-        <Wrapper {...OminousLettersWrapperMotionProps} key={id}>{titleItems}</Wrapper>
+        <Wrapper key={id}>{titleItems}</Wrapper>
     )
 };
 

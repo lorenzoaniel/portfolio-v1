@@ -30,19 +30,18 @@ const DontPressSign = (props) => {
         return () => clearInterval(interval);
     }, [props.quotesArr, props.changeTime]);
 
-    const DontPressSignInitial = {
-        clipPath: props.clipPath,
-        background: `url(${props.signImg})`,
-        backgroundSize: `contain`,
-    }
-
-    const DontPressSignAnimate = {
-        
+    const DontPressSignVariants = {
+        DontPressSignInitial: {
+            clipPath: props.clipPath,
+            background: `url(${props.signImg})`,
+            backgroundSize: `contain`,
+        }
     }
     
     const DontPressSignMotionProps = {
-        initial: DontPressSignInitial,
-        aniamte: DontPressSignAnimate,
+        initial: DontPressSignVariants.DontPressSignInitial,
+        variant: DontPressSignVariants,
+        // animate: DontPressSignAnimate,
     }
 
     return (

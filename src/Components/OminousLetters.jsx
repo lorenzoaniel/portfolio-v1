@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { motion } from 'framer-motion';
 
 const H1 = styled(motion.h1)`
+    /* GENERAL */
     display: inline-block;
     background: linear-gradient(90deg, rgba(245,245,245,1) 30%, rgba(250,250,250,1) 35%, rgba(255,255,255,1) 50%);
     -webkit-background-clip: text;
@@ -31,43 +32,25 @@ const Wrapper = styled(motion.div)`
 const OminousLetters = (props) => {
     const id = nanoid();
 
-    /*OminousLetters*/
-    // const OminousLettersVariants = {
-    //     ominousLettersInitial: {
-    //         opacity: 0,
-    //         scale: 0,
-    //     },
-    //     ominousLettersAnimate: {
-    //         opacity: 1,
-    //         scale: 1,
-    //     },
-    //     ominousLettersExit: {
-    //     }
-    // }
-    
-    // const OminousLettersMotionProps = {
-    //     variant: OminousLettersVariants,
-    //     initial: OminousLettersVariants.ominousLettersInitial,
-    //     animate: OminousLettersVariants.ominousLettersAnimate,
-    //     exit: OminousLettersVariants.ominousLettersExit,
-    // }
+    const H1Variants = {
+        initial: {
+            scale: 0,
+        },
+        lettersAppear: {
+            scale: 1,
+            transition: {
+                duration: 0.5,
+            }
+        }
+    }
 
-    // /*OminousLettersWrapper*/
-
-    // const OminousLettersWrapperInitial = {}
-
-    // const OminousLettersWrapperAnimate = {}
-
-    // const OminousLettersWrapperExit = {}
-    
-    // const OminousLettersWrapperMotionProps = {
-    //     initial: OminousLettersWrapperInitial,
-    //     animate: OminousLettersWrapperAnimate,
-    //     exit: OminousLettersWrapperExit,
-    // }
+    const H1MotionProps = {
+        initial: H1Variants.initial,
+        animate: H1Variants.lettersAppear,
+    }
 
     const titleItems = props.title.split(' ').map((letter, index) => {
-        return( <H1 delay={index} className={"OminousLetterSpan"} key={"OminousLetterSpan"+index+id}>{letter}</H1> )
+        return( <H1 {...H1MotionProps} delay={index} className={"OminousLetterSpan"} key={"OminousLetterSpan"+index+id}>{letter}</H1> )
     })
 
     return(

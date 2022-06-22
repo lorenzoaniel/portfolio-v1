@@ -32,6 +32,13 @@ const DungeonButton = (props) => {
   }, [props.quotesArr, props.changeTime]);
 
   const DungeonButtonVariants = {
+    dungeonButtonInitial: {
+      gridArea: props.gridArea,
+      background: `radial-gradient(circle, rgba(0,0,0,0.5) 5%, rgba(5,100,176,0.5) 15%, rgba(5,30,61,0.5) 25%)`,
+      boxShadow: `0 0 1rem 1rem rgba(0,0,0,0.7),
+                  0 0 1rem 1rem rgba(0,0,0,0.7) inset
+    `,
+    },
     onHoverPortalExpand: {
       scale: 2,
       boxShadow: [`0 0 3rem 3rem rgba(0,0,0,1), 0 0 3rem 3rem rgba(0,0,0,0.9) inset`,
@@ -50,16 +57,8 @@ const DungeonButton = (props) => {
     }
   }
 
-  const DungeonButtonInitial = {
-    gridArea: props.gridArea,
-    background: `radial-gradient(circle, rgba(0,0,0,0.5) 5%, rgba(5,100,176,0.5) 15%, rgba(5,30,61,0.5) 25%)`,
-    boxShadow: `0 0 1rem 1rem rgba(0,0,0,0.7),
-                0 0 1rem 1rem rgba(0,0,0,0.7) inset
-    `,
-  }
-
   const DungeonButtonMotionProps = {
-    initial: DungeonButtonInitial,
+    initial: DungeonButtonVariants.dungeonButtonInitial,
     variant: DungeonButtonVariants,
     whileHover: DungeonButtonVariants.onHoverPortalExpand,
     animate: DungeonButtonVariants.pulsingDarkButton,

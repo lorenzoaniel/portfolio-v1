@@ -35,13 +35,21 @@ const DontPressSign = (props) => {
             clipPath: props.clipPath,
             background: `url(${props.signImg})`,
             backgroundSize: `contain`,
+        },
+        DontPressSignAnimate: {
+            opacity: [0.5, 1],
+            transition: {
+                repeat: Infinity,
+                repeatType: `reverse`,
+                duration: (props.changeTime/1000)/3
+            }
         }
     }
     
     const DontPressSignMotionProps = {
         initial: DontPressSignVariants.DontPressSignInitial,
         variant: DontPressSignVariants,
-        // animate: DontPressSignAnimate,
+        animate: DontPressSignVariants.DontPressSignAnimate,
     }
 
     return (

@@ -26,15 +26,15 @@ const NavBar = (props) => {
     const menuItems = [
         {
             title: "About",
-            link: "/"
+            link: "about"
         },
         {
             title: "Projects",
-            link: "/projects"
+            link: "projects"
         },
         {
             title: "Contact",
-            link: "/contact"
+            link: "contact"
         },
     ]
 

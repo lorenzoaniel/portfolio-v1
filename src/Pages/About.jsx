@@ -1,17 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import AboutIntroduction from '../Components/AboutIntroduction';
-import DontPressWarning from '../Components/DontPressWarning';
 import { motion } from 'framer-motion';
+import { Outlet } from 'react-router-dom';
+import AboutPageConfig from '../Configs/AboutPageConfig'; 
 
-const AboutPageConfig = {
-  aboutIntro: {
-    gridArea: "1",
-  },
-  dontPress: {
-    gridArea: "2",
-  }
-}
 
 const Div = styled(motion.div)`
   display: grid;
@@ -38,8 +31,8 @@ const About = (props) => {
   
   return (
     <Div {...AboutMotionProps}>
-      <AboutIntroduction gridArea={AboutPageConfig.aboutIntro.gridArea}/>
-      <DontPressWarning gridArea={AboutPageConfig.dontPress.gridArea}/>
+      <AboutIntroduction gridArea={AboutPageConfig().aboutIntro.gridArea}/>
+      <Outlet/>
     </Div>
   );
 }

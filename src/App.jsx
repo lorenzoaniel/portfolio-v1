@@ -7,6 +7,11 @@ import NavBar from './Components/NavBar';
 import styled from 'styled-components';
 import SnowBackground from './Components/SnowBackground';
 import AppConfig from './Configs/AppConfig';
+import DontPressWarning from './Components/DontPressWarning';
+import Dungeon from './DungeonCrawlerModule/Dungeon';
+import AboutPageConfig from './Configs/AboutPageConfig';
+import NoMatch from './Components/NoMatch';
+
 
 const Main = styled.div`
   display: grid;
@@ -26,9 +31,16 @@ function App() {
         <Main>
           <NavBar gridArea={AppConfig().navbar.gridArea}/>
           <Routes>
-            <Route path={"/"} element={<About gridArea={AppConfig().about.gridArea} />}/>
-            <Route path={"/projects"} element={<Projects gridArea={AppConfig().projects.gridArea} />}/>
-            <Route path={"/contact"} element={<Contact gridArea={AppConfig().contact.gridArea} />}/>
+            <Route index element={<About gridArea={AppConfig().about.gridArea} />}/>
+            <Route path={"about"} element={<About gridArea={AppConfig().about.gridArea} />}>
+              <Route index element={<DontPressWarning gridArea={AboutPageConfig().dontPress.gridArea}/>} />
+              <Route path={"sign"} element={<DontPressWarning gridArea={AboutPageConfig().dontPress.gridArea}/>}/>
+              <Route path={"dungeon"} element={<Dungeon gridArea={AboutPageConfig().dontPress.gridArea}/>}/>
+              <Route path="*" element={<NoMatch />} />
+            </Route>
+            <Route path={"projects"} element={<Projects gridArea={AppConfig().projects.gridArea} />}/>
+            <Route path={"contact"} element={<Contact gridArea={AppConfig().contact.gridArea} />}/>
+            <Route path="*" element={<NoMatch />} />
           </Routes>
         </Main>
       </SnowBackground>

@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 /* COMPONENT IMPORTS */
 import OminousLetters from './OminousLetters';
@@ -23,6 +24,9 @@ const ButtonComp = styled(motion.button)`
 
 const DungeonButton = (props) => {
   const [quote, setQuote] = React.useState(() => getQuotes(props.quotesArr));
+  const [portalLocation, setPortalLocation] = React.useState("dungeon");
+
+  let navigate = useNavigate();
   
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -64,10 +68,15 @@ const DungeonButton = (props) => {
     animate: DungeonButtonVariants.pulsingDarkButton,
   }
 
+  const toggleDungeon = () => {
+    navigate(portalLocation)
+  }
+
   return (
-    <ButtonComp  {...DungeonButtonMotionProps}>
-      <OminousLetters title={quote}/>
-    </ButtonComp>
+      <ButtonComp onClick={toggleDungeon} {...DungeonButtonMotionProps}>
+        <OminousLetters title={quote}/>
+      </ButtonComp>
+    
   );
 }
 

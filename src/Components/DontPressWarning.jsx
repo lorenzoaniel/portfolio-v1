@@ -40,7 +40,7 @@ const Div = styled(motion.div)`
     grid-gap: 1rem;
 `;
 
-const WoodenSignShadow = styled.div`
+const WoodenSignShadow = styled(motion.div)`
     /* GENERAL */
     height: 100%;
     filter: drop-shadow(0rem 1rem 0.5rem rgba(0, 0, 0,1));
@@ -48,23 +48,34 @@ const WoodenSignShadow = styled.div`
 
 const DontPressWarning = (props) => {
 
-  const DontPressWarningInitial = {
-    gridArea: props.gridArea,
-    backgroundImage: `url(${woodSign})`,
+  const DontPressWarningVariants = {
+    dontPressWarningInitial: {
+      gridArea: props.gridArea,
+      backgroundImage: `url(${woodSign})`,
+    },
+    wiggleBoardAnimation: { //apply this animation to the outermost wrapper, otherwise you get a thin border that moves with the element
+      transform: [`rotate(1deg)`,`rotate(-1deg)`],
+      transition: {
+        duration: 1,
+        repeat: Infinity,
+        repeatType: "reverse",
+      }
+    }
   }
 
   const DontPressWarningMotionProps = {
-    initial: DontPressWarningInitial,
+    initial: DontPressWarningVariants.dontPressWarningInitial,
+    // animate: DontPressWarningVariants.wiggleBoardAnimation,
   }
 
   return (
-    <WoodenSignShadow>
+    <WoodenSignShadow animate={DontPressWarningVariants.wiggleBoardAnimation}> 
       <Div {...DontPressWarningMotionProps} >
-        <DontPressSign gridArea={"topSign"} quotesArr={dontPressWarning.warning} changeTime={5000} signImg={warningSignImgTop} clipPath={`polygon(0 9%, 100% 0, 97% 26%, 100% 89%, 66% 95%, 28% 91%, 0 100%, 3% 58%, 0 44%, 3% 23%)`}></DontPressSign>
-        <DontPressSign gridArea={"leftSign"} quotesArr={dontPressWarning.warning} changeTime={4000} signImg={warningSignImgLeft} clipPath={`polygon(70% 0, 100% 12%, 98% 63%, 100% 100%, 82% 93%, 32% 87%, 2% 93%, 0 48%, 0 0, 23% 8%)`}></DontPressSign>
+        <DontPressSign gridArea={"topSign"} quotesArr={dontPressWarning.warning} changeTime={5000} signImg={warningSignImgTop} clipPath={`polygon(0 9%, 100% 0, 97% 26%, 100% 89%, 66% 95%, 28% 91%, 0 100%, 3% 58%, 0 44%, 3% 23%)`}/>
+        <DontPressSign gridArea={"leftSign"} quotesArr={dontPressWarning.warning} changeTime={4000} signImg={warningSignImgLeft} clipPath={`polygon(70% 0, 100% 12%, 98% 63%, 100% 100%, 82% 93%, 32% 87%, 2% 93%, 0 48%, 0 0, 23% 8%)`}/>
         <DungeonButton gridArea={"centerButton"} quotesArr={pressMeTaunts.taunts} changeTime={5000}/>
-        <DontPressSign gridArea={"rightSign"} quotesArr={dontPressWarning.warning} changeTime={3000} signImg={warningSignImgRight} clipPath={`polygon(59% 10%, 100% 0, 96% 25%, 100% 100%, 63% 91%, 34% 100%, 0 95%, 2% 31%, 0 10%, 23% 0)`}></DontPressSign>
-        <DontPressSign gridArea={"botSign"} quotesArr={dontPressWarning.warning} changeTime={2000} signImg={warningSignImgBottom} clipPath={`polygon(100% 0, 98% 12%, 100% 34%, 97% 88%, 100% 100%, 3% 93%, 0 69%, 5% 43%, 0 39%, 3% 0)`}></DontPressSign>
+        <DontPressSign gridArea={"rightSign"} quotesArr={dontPressWarning.warning} changeTime={3000} signImg={warningSignImgRight} clipPath={`polygon(59% 10%, 100% 0, 96% 25%, 100% 100%, 63% 91%, 34% 100%, 0 95%, 2% 31%, 0 10%, 23% 0)`}/>
+        <DontPressSign gridArea={"botSign"} quotesArr={dontPressWarning.warning} changeTime={2000} signImg={warningSignImgBottom} clipPath={`polygon(100% 0, 98% 12%, 100% 34%, 97% 88%, 100% 100%, 3% 93%, 0 69%, 5% 43%, 0 39%, 3% 0)`}/>
       </Div>
     </WoodenSignShadow>
   );

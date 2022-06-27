@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import About from './Pages/About';
 import Projects from './Pages/Projects';
 import Contact from './Pages/Contact';
@@ -10,7 +10,7 @@ import AppConfig from './Configs/AppConfig';
 import DontPressWarning from './Components/DontPressWarning';
 import Dungeon from './DungeonCrawlerModule/Dungeon';
 import AboutPageConfig from './Configs/AboutPageConfig';
-import NoMatch from './Components/NoMatch';
+// import NoMatch from './Components/NoMatch';
 
 
 const Main = styled.div`
@@ -31,16 +31,15 @@ function App() {
         <Main>
           <NavBar gridArea={AppConfig().navbar.gridArea}/>
           <Routes>
-            <Route index element={<About gridArea={AppConfig().about.gridArea} />}/>
             <Route path={"about"} element={<About gridArea={AppConfig().about.gridArea} />}>
               <Route index element={<DontPressWarning gridArea={AboutPageConfig().dontPress.gridArea}/>} />
               <Route path={"sign"} element={<DontPressWarning gridArea={AboutPageConfig().dontPress.gridArea}/>}/>
               <Route path={"dungeon"} element={<Dungeon gridArea={AboutPageConfig().dontPress.gridArea}/>}/>
-              <Route path="*" element={<NoMatch />} />
+              <Route path="*" element={<Navigate to="/about" />} />
             </Route>
             <Route path={"projects"} element={<Projects gridArea={AppConfig().projects.gridArea} />}/>
             <Route path={"contact"} element={<Contact gridArea={AppConfig().contact.gridArea} />}/>
-            <Route path="*" element={<NoMatch />} />
+            <Route path="*" element={<Navigate to="/about" />} />
           </Routes>
         </Main>
       </SnowBackground>

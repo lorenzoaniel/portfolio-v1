@@ -70,6 +70,7 @@ const DungeonButton = (props) => {
 
   const toggleDungeon = () => {
     navigate(portalLocation)
+    setPortalLocation(portalLocation) // change this to alternate between dungeon and back to warning sign
   }
 
   return (
